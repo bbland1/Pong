@@ -28,6 +28,7 @@ class Scoreboard(Turtle):
             self.right_paddle_score += 1
         self.update_score()
 
+    # Cause the game to stop and announce the winner
     def game_over(self):
         if self.left_paddle_score == 5 or self.right_paddle_score == 5:
             winner = ""

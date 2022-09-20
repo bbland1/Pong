@@ -10,6 +10,7 @@ class Paddle(Turtle):
         self.penup()
         self.goto(x=position[0], y=position[1])
 
+    # Paddle movement function
     def up(self):
         new_y = self.ycor() + 20
         self.goto(self.xcor(), new_y)

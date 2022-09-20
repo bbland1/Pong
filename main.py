@@ -9,26 +9,31 @@ screen = Screen()
 screen.setup(width=800, height=600)
 screen.bgcolor("black")
 screen.title("PONG")
+# Makes is so the screen doesn't refresh so quickly you can't see anything
 screen.tracer(0)
 
+# Setting up the game components
 left_paddle = Paddle((-360, 0))
 right_paddle = Paddle((350, 0))
 ball = Ball()
 score = Scoreboard()
 
-
+# getting the screen to listen and what to listen for each paddle
 screen.listen()
 screen.onkeypress(right_paddle.up, "Up")
 screen.onkeypress(right_paddle.down, "Down")
 screen.onkeypress(left_paddle.up, "w")
 screen.onkeypress(left_paddle.down, "s")
 
-
+# Starting the game
 game_started = True
 
 while game_started:
+    # changes the speed of the screen basically pausing
     time.sleep(ball.move_speed)
+    # the changes of the screen update
     screen.update()
+    # game gets moving
     ball.move()
 
     # Detect the top and bottom wall collision and make the ball bounce
@@ -50,6 +55,7 @@ while game_started:
         ball.reset()
         score.add_score("left")
 
+    #  Detects if either player has reached 5 first and whoever has wins
     if score.game_over():
         game_started = False
 
